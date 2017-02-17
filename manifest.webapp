@@ -4,7 +4,7 @@
     "description":"LMIS Setup App",
     "icons":{
         "16":null,
-        "48":"api.png",
+        "48":"setup_icon.png",
         "128":null
     }
     ,"developer":{
