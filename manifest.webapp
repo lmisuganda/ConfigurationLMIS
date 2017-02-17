@@ -1,14 +1,14 @@
 {
     "version":"0.01",
     "name":"LMIS",
-    "description":"LMIS Ordering App",
+    "description":"LMIS Setup App",
     "icons":{
         "16":null,
         "48":"api.png",
         "128":null
     }
     ,"developer":{
-        "url":"https://github.com/lmisuganda/dhis2lmisprototype",
+        "url":"https://github.com/lmisuganda/ConfigurationLMIS",
         "name":"nicolhag",
         "company":null,
         "email":null

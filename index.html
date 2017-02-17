@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <title>Set up LMIS reporting for new Program</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="http://terms.nicolaihagen.no/favicon.ico"/>
+  </head>
+
+  <body>
+		<main>
+            <h1 id="main-heading"> Setup wizard for commodity ordering in a new Program </h1>
+
+            <img src="dhis2.jpg" id="dhis2logo" alt="DHIS2 logo" />
+
+            <h2>1. Create a new Program in DHIS2, and select it in the drop-down list below</h2>
+
+            <select id="program_selector">
+                <!--option> Choose Program Name</option-->
+            </select>
+
+            <h2 style="margin:top;">2. Select a name and abbreviation for your health programme</h2>
+
+            <input id="input-field" type="text" placeholder="Please write the name for the programme" tabindex="1" required>
+            <input id="input-field" type="text" placeholder="Please write an abbreviation for the programme" tabindex="1" required>
+
+            <!--h2 style="margin:top;">3. What fields do you want to aquire for all the commodities?</h2-->
+
+            <!--ul id="commodity-info-list">
+                <li>
+                    <input class="commodity-info" id="commodity-info-0" type="text" placeholder="e.g., Quantity received, AMC etc." tabindex="1" required>
+                </li>
+            </ul>
+            <i class="fa fa-plus" aria-hidden="true" id="plus-btn"></i-->
+		</main>
+  </body>
+</html>
+
+<script src="js/script.js"></script>
+<script src="js/EventListeners.js"></script>

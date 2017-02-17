@@ -1,0 +1,119 @@
+*{
+    padding:0; margin:0;
+    font-weight: 100;
+}
+
+h1{
+    font-size:30px;
+}
+
+body{
+    text-align: center;
+    color:white;
+    /*background:#263238;*/
+    background-color:#1D5288;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#minSelect{
+    width:53vw;
+}
+
+#program_selector{
+    width:100px;
+}
+
+input, select{
+    text-align: center;
+}
+
+ul, li{
+    margin:0;
+    padding:0;
+}
+
+main{
+    margin-top:5vh;
+}
+
+main p{
+    margin-top:2vh;
+    margin-bottom:2vh;
+}
+
+h2{
+    text-align:left;
+    margin: 6vh 0 6vh 0.6vh;
+    font-style: italic;
+}
+
+h3{
+    width:70%;
+    border-bottom: 1px black solid;
+    margin: 1vh auto 1vh auto;
+}
+
+
+@media screen and (max-width: 700px){
+
+    #generate{
+        min-width:35vw;
+        width:35vw;
+    }
+
+    #dhis2logo{
+        display:none;
+    }
+
+}
+
+#dhis2logo{
+    margin-top: 10px;
+}
+
+#input-field{
+    padding-bottom:20px;
+    padding-top:20px;
+    width:90vw;
+    font-size: 20px;
+}
+
+.commodity-info{
+    padding-bottom:20px;
+    padding-top:20px;
+    width:40vw;
+    font-size: 15px;
+}
+
+#plus-btn{
+    display:block;
+    color:green;
+    font-size:40px;
+}
+
+#plus-btn:hover{
+    cursor:pointer;
+}
+
+
+/*#submit-abbr-button, #submit-removal-button{
+    width:20vw;
+    border-radius:5px;
+    margin: 0 auto 20px auto;
+    font-size: 20px;
+    padding:5px;
+    background-color: #003079;
+    -moz-box-shadow-bottom: 10px 10px 5px black;
+    -webkit-box-shadow-bottom: 10px 10px 5px black;
+    box-shadow-bottom: 10px 10px 5px black;
+}
+
+#display-abbr-message, #display-deletion-message{
+    padding: 20px;
+    text-align: center;
+    color:white;
+    background-color:#449d44;
+    font-size:22px;
+    margin-bottom:10px;
+    border:none;
+}*/
