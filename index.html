@@ -15,16 +15,41 @@
 
             <img src="dhis2.jpg" id="dhis2logo" alt="DHIS2 logo" />
 
-            <h2>1. Create a new Program in DHIS2, and select it in the drop-down list below</h2>
 
-            <select id="program_selector">
+            <!--select id="program_selector"-->
                 <!--option> Choose Program Name</option-->
-            </select>
+            <!--/select-->
 
-            <h2 style="margin:top;">2. Select a name and abbreviation for your health programme</h2>
+
+            <h2>1. Enter Program name abbreviation to create new DHIS2 Program and Program Stage</h2>
+            <input class="input-fields" id="program-name-input" type="text" placeholder="e.g., ARV" tabinde="1" required>
+            <input id="program-name-submit" type="submit" class="submit-btns" value="Submit">
+
+            <h2 style="margin:top;">2. Enter what sections you will use for data collections. Press enter to add to list</h2>
+            <input class="input-fields" id="commodity-section-input" type="text" placeholder="Commodity section. Example: Adult formulations" tabindex="1" required>
+            <input id="commodity-section-submit" type="submit" class="submit-btns" value="Submit">
+
+            <ul id="commodity-section-list">
+
+            </ul>
+
+            <h2 style="margin:top;">3. Enter what you want to collect on each commodity (Commodity Operations)</h2>
+            <input class="input-fields" id="commodity-operation-input" type="text" placeholder="Commodity operation. Example: Quantity Received" tabindex="1" required>
+            <input id="commodity-operation-submit" type="submit" class="submit-btns" value="Submit">
+
+            <ul id="commodity-operation-list">
+
+            </ul>
+
+
+            <div id="commodity-tables-for-commodities-operations">
+                
+            </div>
+
+            <!--h2 style="margin:top;">2. Select a name and abbreviation for your health programme</h2>
 
             <input id="input-field" type="text" placeholder="Please write the name for the programme" tabindex="1" required>
-            <input id="input-field" type="text" placeholder="Please write an abbreviation for the programme" tabindex="1" required>
+            <input id="input-field" type="text" placeholder="Please write an abbreviation for the programme" tabindex="1" required-->
 
             <!--h2 style="margin:top;">3. What fields do you want to aquire for all the commodities?</h2-->
 
@@ -38,5 +63,6 @@
   </body>
 </html>
 
-<script src="js/script.js"></script>
-<script src="js/EventListeners.js"></script>
+<script src="js/CreateProgram.js"></script>
+<script src="js/CreateProgramStage.js"></script>
+<script src="js/app.js"></script>

@@ -71,13 +71,6 @@ h3{
     margin-top: 10px;
 }
 
-#input-field{
-    padding-bottom:20px;
-    padding-top:20px;
-    width:90vw;
-    font-size: 20px;
-}
-
 .commodity-info{
     padding-bottom:20px;
     padding-top:20px;
@@ -95,6 +88,28 @@ h3{
     cursor:pointer;
 }
 
+.input-fields{
+    padding-bottom:10px;
+    padding-top:10px;
+    width:50vw;
+    font-size: 20px;
+}
+
+.submit-btns{
+    display:block;
+    margin:0 auto;
+    margin-top:10px;
+}
+
+.empty-fields{
+    background-color: rgba(169,169,169, 0.6);
+}
+
+.commodity-table{
+    margin:0 auto;
+    margin-top:25px;
+    margin-bottom:40px;
+}
 
 /*#submit-abbr-button, #submit-removal-button{
     width:20vw;
