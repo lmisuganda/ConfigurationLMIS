@@ -2,7 +2,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <title>Set up LMIS reporting for new Program</title>
+    <title>Setup LMIS reporting for new Program</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -16,49 +16,91 @@
             <img src="dhis2.jpg" id="dhis2logo" alt="DHIS2 logo" />
 
 
-            <!--select id="program_selector"-->
-                <!--option> Choose Program Name</option-->
-            <!--/select-->
-
 
             <h2>1. Enter Program name abbreviation to create new DHIS2 Program and Program Stage</h2>
             <input class="input-fields" id="program-name-input" type="text" placeholder="e.g., ARV" tabinde="1" required>
             <input id="program-name-submit" type="submit" class="submit-btns" value="Submit">
 
-            <h2 style="margin:top;">2. Enter what sections you will use for data collections. Press enter to add to list</h2>
-            <input class="input-fields" id="commodity-section-input" type="text" placeholder="Commodity section. Example: Adult formulations" tabindex="1" required>
-            <input id="commodity-section-submit" type="submit" class="submit-btns" value="Submit">
+            <h2>2. Sections</h2>
 
-            <ul id="commodity-section-list">
-
-            </ul>
-
-            <h2 style="margin:top;">3. Enter what you want to collect on each commodity (Commodity Operations)</h2>
-            <input class="input-fields" id="commodity-operation-input" type="text" placeholder="Commodity operation. Example: Quantity Received" tabindex="1" required>
-            <input id="commodity-operation-submit" type="submit" class="submit-btns" value="Submit">
-
-            <ul id="commodity-operation-list">
-
-            </ul>
-
-
-            <div id="commodity-tables-for-commodities-operations">
-                
+            <div class="new-section-wrapper">
+                <div class="new-section-button">
+                    <p>Add new section</p>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <div class="section">
+                    <h3>Adult formulations</h3>
+                    <ul>
+                        <li class="commodity">
+                            <h4 class="commodity-name" contenteditable> Efavirenz (EFV) 600mg </h4>
+                            <ul class="operations">
+                                <li class="operation" contenteditable> Opening balance</li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity Received</li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> ART &#37; PMTCT Consumption </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Losses / Adjustments </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Days out of stock </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Adjusted AMC </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Closing Balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Months of stock on-hand </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity required </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Notes </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <i class="fa fa-plus add-operation" aria-hidden="true"></i>
+                            </ul>
+                        </li>
+                        <li class="commodity">
+                            <h4 class="commodity-name" contenteditable> Nevirapine (NVP) 200mg </h4>
+                            <ul class="operations">
+                                <li class="operation" contenteditable> Opening balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity Received </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> ART &#37; PMTCT Consumption </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Losses / Adjustments </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Days out of stock </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Adjusted AMC </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Closing Balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Months of stock on-hand </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity required </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Notes </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <i class="fa fa-plus add-operation" aria-hidden="true"></i>
+                            </ul>
+                        </li>
+                        <li class="commodity">
+                            <h4 class="commodity-name" contenteditable> Atazanavir/Ritonavir (ATV/r) 300mg/100mg </h4>
+                            <ul class="operations">
+                                <li class="operation" contenteditable> Opening balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity Received </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> ART &#37; PMTCT Consumption </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Losses / Adjustments </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Days out of stock </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Adjusted AMC </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Closing Balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Months of stock on-hand </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity required </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Notes </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <i class="fa fa-plus add-operation" aria-hidden="true"></i>
+                            </ul>
+                        </li>
+                        <li class="commodity">
+                            <h4 class="commodity-name" contenteditable> Lopinavir/Ritonavir (LPV/r) 200mg/50mg </h4>
+                            <ul class="operations">
+                                <li class="operation" contenteditable> Opening balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity Received </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> ART &#37; PMTCT Consumption </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Losses / Adjustments </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Days out of stock </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Adjusted AMC </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Closing Balance </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Months of stock on-hand </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Quantity required </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <li class="operation" contenteditable> Notes </li> <i class="fa fa-times remove-operation" aria-hidden="true"></i>
+                                <i class="fa fa-plus add-operation" aria-hidden="true"></i>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <!--h2 style="margin:top;">2. Select a name and abbreviation for your health programme</h2>
 
-            <input id="input-field" type="text" placeholder="Please write the name for the programme" tabindex="1" required>
-            <input id="input-field" type="text" placeholder="Please write an abbreviation for the programme" tabindex="1" required-->
 
-            <!--h2 style="margin:top;">3. What fields do you want to aquire for all the commodities?</h2-->
-
-            <!--ul id="commodity-info-list">
-                <li>
-                    <input class="commodity-info" id="commodity-info-0" type="text" placeholder="e.g., Quantity received, AMC etc." tabindex="1" required>
-                </li>
-            </ul>
-            <i class="fa fa-plus" aria-hidden="true" id="plus-btn"></i-->
 		</main>
   </body>
 </html>

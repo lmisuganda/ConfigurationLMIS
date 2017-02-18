@@ -47,12 +47,6 @@ h2{
     font-style: italic;
 }
 
-h3{
-    width:70%;
-    border-bottom: 1px black solid;
-    margin: 1vh auto 1vh auto;
-}
-
 
 @media screen and (max-width: 700px){
 
@@ -101,34 +95,72 @@ h3{
     margin-top:10px;
 }
 
-.empty-fields{
-    background-color: rgba(169,169,169, 0.6);
-}
-
-.commodity-table{
-    margin:0 auto;
-    margin-top:25px;
-    margin-bottom:40px;
-}
-
-/*#submit-abbr-button, #submit-removal-button{
-    width:20vw;
-    border-radius:5px;
-    margin: 0 auto 20px auto;
-    font-size: 20px;
-    padding:5px;
-    background-color: #003079;
-    -moz-box-shadow-bottom: 10px 10px 5px black;
-    -webkit-box-shadow-bottom: 10px 10px 5px black;
-    box-shadow-bottom: 10px 10px 5px black;
-}
-
-#display-abbr-message, #display-deletion-message{
-    padding: 20px;
+.new-section-button{
+    display:inline-block;
+    background-color:grey;
+    margin-left: 20px;
+    margin-bottom:20px;
+    padding:10px;
     text-align: center;
-    color:white;
-    background-color:#449d44;
-    font-size:22px;
-    margin-bottom:10px;
-    border:none;
-}*/
+}
+
+.new-section-wrapper{
+    text-align: left;
+}
+
+.new-section-button:hover{
+    cursor:pointer;
+}
+
+.section ul{
+    margin-left:2%;
+    margin-top:1%;
+    list-style: none;
+}
+
+.section h3{
+    width:70%;
+    border-bottom: 1px black solid;
+    margin-left:1%;
+}
+
+.operations, .operation{
+    display:inline-block;
+}
+
+.commodity-name{
+    dispaly:block;
+}
+
+.operation{
+    margin-bottom:1%;
+    background-color:grey;
+    padding:5px;
+    font-size:13px;
+}
+
+.operation:hover{
+    cursor: pointer;
+}
+
+.operations{
+    width:80vw;
+}
+
+.remove-operation{
+    position: relative;
+    right:3px;
+}
+
+.remove-operation:hover{
+    cursor:pointer;
+    color:red;
+}
+.add-operation:hover{
+    cursor:pointer;
+    color:#00FF00;
+}
+
+.add-operation{
+    margin-left:10px;
+}
