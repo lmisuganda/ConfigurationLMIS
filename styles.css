@@ -97,7 +97,7 @@ h2{
 
 .large-button-with-text{
     display:inline-block;
-    background-color:grey;
+    background-color:#df1717;
     margin-left: 20px;
     margin-bottom:20px;
     padding:6px;
@@ -175,4 +175,8 @@ h2{
 
 .large-button-with-text i{
     margin-left:5px;
+}
+
+#sections-part{
+    text-align: left;
 }
