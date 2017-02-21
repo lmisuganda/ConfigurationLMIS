@@ -7,29 +7,18 @@ h1{
     font-size:30px;
 }
 
+h2{
+    text-align:left;
+    margin: 6vh 0 6vh 0.6vh;
+    font-style: italic;
+}
+
 body{
     text-align: center;
     color:white;
     /*background:#263238;*/
     background-color:#1D5288;
     font-family: 'Roboto Condensed', sans-serif;
-}
-
-#minSelect{
-    width:53vw;
-}
-
-#program_selector{
-    width:100px;
-}
-
-input, select{
-    text-align: center;
-}
-
-ul, li{
-    margin:0;
-    padding:0;
 }
 
 main{
@@ -41,19 +30,16 @@ main p{
     margin-bottom:2vh;
 }
 
-h2{
-    text-align:left;
-    margin: 6vh 0 6vh 0.6vh;
-    font-style: italic;
+input, select{
+    text-align: center;
 }
 
+ul, li{
+    margin:0;
+    padding:0;
+}
 
 @media screen and (max-width: 700px){
-
-    #generate{
-        min-width:35vw;
-        width:35vw;
-    }
 
     #dhis2logo{
         display:none;
@@ -61,25 +47,11 @@ h2{
 
 }
 
-#dhis2logo{
-    margin-top: 10px;
-}
-
 .commodity-info{
     padding-bottom:20px;
     padding-top:20px;
     width:40vw;
     font-size: 15px;
-}
-
-#plus-btn{
-    display:block;
-    color:green;
-    font-size:40px;
-}
-
-#plus-btn:hover{
-    cursor:pointer;
 }
 
 .input-fields{
@@ -179,4 +151,30 @@ h2{
 
 #sections-part{
     text-align: left;
+}
+
+#dhis2logo{
+    margin-top: 10px;
+}
+
+#plus-btn{
+    display:block;
+    color:green;
+    font-size:40px;
+}
+
+#plus-btn:hover{
+    cursor:pointer;
+}
+
+#minSelect{
+    width:53vw;
+}
+
+#program_selector{
+    width:100px;
+}
+
+#send-commodities-button{
+    background-color: #dfa217;
 }

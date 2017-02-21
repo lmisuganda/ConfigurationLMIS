@@ -4,12 +4,12 @@ var commodity_operation_names = ['Opening balance', 'Quantity received', 'ART & 
 $( document ).ready(function(){
     // populate with sample data
 
-    attachEventListeners()
+    attachInitialEventListeners()
 });
 
 // section_names = []
 // commodity_operation_names = []
-function attachEventListeners(){
+function attachInitialEventListeners(){
     $('#program-name-input').keyup(function (e) {
         if (e.keyCode == 13) {
             // submitProgramToServer(); --> KOMMENTER UT DISSE FOR Å LEGGE TIL I DHIS2
@@ -25,15 +25,48 @@ function attachEventListeners(){
         // console.log("Sender med: ", commodity_operation_names)
         $('#sections').append(createSectionFromOperationsList(section_names[0], commodity_operation_names))
     });
+
+    $('#send-commodities-button').click(function(e){
+        createDataObjectForServer()
+    });
+
 }
+
+function createDataObjectForServer(){
+    sections = []
+    $('.section').each( function(i, section_object){
+        section_name = $(section_object).find('.section-name')[0].innerHTML
+        sections[i] = {}
+        sections[i].name = section_name
+        sections[i].commodities = []
+
+        $(section_object).each(function (i, commodity_object){
+            commodity_names = $(commodity_object).find('.commodity-name')
+            for(var j = 0; j < commodity_names.length; j++){
+                commodity_name = commodity_names[j].innerHTML
+                sections[i].commodities.push({name:commodity_name})
+                sections[i].commodities[j].operations = []
+
+                operation_names = $(commodity_object).find('.operation')
+                for (var k = 0; k < operation_names.length; k++){
+                    operation_name = operation_names[k].innerHTML
+                    sections[i].commodities[j].operations.push(operation_name)
+                }
+            };
+        });
+
+    })
+    console.log("Mitt O-Store Object er nu:", sections)
+}
+
 var number_of_sections = 0
 function createSectionFromOperationsList(section_name, operation_list){
-    console.log("Fikk inn: ", operation_list)
     var section_element = document.createElement('div')
     section_element.className = 'section'
     section_element.id = 'section-' + number_of_sections
 
     var header = document.createElement('h3')
+    header.className = 'section-name'
     header.innerHTML = section_name
     header.setAttribute('contenteditable', 'true')
 
@@ -122,6 +155,11 @@ function createSectionFromOperationsList(section_name, operation_list){
 
 function clonePreviousCommodity(e){
     section_id = '#' + $(e.target).closest('div').closest('.section').attr('id')
+
+    /*
+        Adding event listeners is needed, because eventlisteners will not
+        be passed on when using JQuery's appendTo.
+    */
     appended_obj = $(section_id + ' .all-commodities-in-section .commodity')
         .last()
         .clone(true, true)
@@ -130,7 +168,7 @@ function clonePreviousCommodity(e){
         .children('.operations')
         .children('.remove-operation')
         // .click(removeElement)
-    console.log("kommer hiy")
+
     removeButtons.each(function(index){
         removeButtons.click(removeElement)
     })
@@ -144,7 +182,6 @@ function clonePreviousCommodity(e){
 
 function addNewCommodity(e){
     section_id = '#' + $(e.target).closest('div').closest('.section').attr('id')
-    console.log("næmmen hellohello", section_id, $(e.target))
     var commodity = document.createElement('li')
     commodity.className = 'commodity'
 
