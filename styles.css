@@ -95,20 +95,20 @@ h2{
     margin-top:10px;
 }
 
-.new-section-button{
+.large-button-with-text{
     display:inline-block;
     background-color:grey;
     margin-left: 20px;
     margin-bottom:20px;
-    padding:10px;
+    padding:6px;
     text-align: center;
 }
 
-.new-section-wrapper{
+.large-button-with-text{
     text-align: left;
 }
 
-.new-section-button:hover{
+.large-button-with-text:hover{
     cursor:pointer;
 }
 
@@ -129,12 +129,12 @@ h2{
 }
 
 .commodity-name{
-    dispaly:block;
+    display:inline-block;
 }
 
 .operation{
     margin-bottom:1%;
-    background-color:grey;
+    background-color:green;
     padding:5px;
     font-size:13px;
 }
@@ -163,4 +163,16 @@ h2{
 
 .add-operation{
     margin-left:10px;
+}
+
+.section{
+    text-align: left;
+}
+
+.large-button-with-text p{
+    display:inline-block;
+}
+
+.large-button-with-text i{
+    margin-left:5px;
 }
