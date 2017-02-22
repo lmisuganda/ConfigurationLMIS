@@ -38,9 +38,14 @@ function createProgramObject(name){
 
 function createProgramWithInputValue(){
     program_name = $('#program-name-input').val()
+
     return sendNewProgramToServer(createProgramObject(program_name)).then(function(){
         console.log("mitt obj ble: ", created_program)
     })
+}
+
+function getProgramName(){
+    return created_program.name
 }
 
 // function getAllPrograms(){
