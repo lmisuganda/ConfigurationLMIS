@@ -4,23 +4,29 @@ function createDataObjectForServer(){
     $('#sections .section').each(function (sec_nr, section){
         section_name = $(section).find('.section-name')[0].innerHTML
         sections[sec_nr] = {}
-        sections[sec_nr].name = section_name
+        sections[sec_nr].name = removeHTMLEncodings(section_name)
         sections[sec_nr].commodities = []
         var commodities = $(section).find('.all-commodities-in-section .commodity')
 
         $(commodities).each(function (com_nr, commodity){
             var commodity_name = $(commodity).find('.commodity-name')[0].innerHTML
-            sections[sec_nr].commodities.push({name:commodity_name})
+            sections[sec_nr].commodities.push({name: removeHTMLEncodings(commodity_name)})
             sections[sec_nr].commodities[com_nr].operations = []
 
             var operations = $(commodity).find('.operations .operation')
             $(operations).each(function (opr_nr, operation){
                 var operation_name = operation.innerHTML
-                sections[sec_nr].commodities[com_nr].operations.push(operation_name)
+                sections[sec_nr].commodities[com_nr].operations.push(removeHTMLEncodings(operation_name))
             })
         })
     });
     return sections;
+}
+
+// will substitute for example the string "&amp;" with "&"
+function removeHTMLEncodings(str){
+    var decoded = $('<textarea />').html(str).text();
+    return decoded
 }
 
 var number_of_sections = 0

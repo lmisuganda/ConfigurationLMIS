@@ -3,14 +3,17 @@ function createDataElementsFromSections(sections_data){
     console.log("SectionsData: ", sections_data)
 
     for(var i = 0; i < sections_data.length; i++){
-        console.log("Ser på section: ", sections_data[i].name)
+        console.log("Section: ", sections_data[i].name)
 
         for (var j = 0; j < sections_data[i].commodities.length; j++){
-            sections_data[i].commodities[j].name
-            console.log("   ser på commd: ", sections_data[i].commodities[j].name)
-            // for( var k = 0; k < sections_data[i].commodities[j].)
-            // full_commodity_name = getProgramName() + '__' +
-            // sendToServer(createDataElementObject( ))
+            commodity_name = sections_data[i].commodities[j].name
+            console.log("   Commodity: ", sections_data[i].commodities[j].name)
+            for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
+                operation_name = sections_data[i].commodities[j].operations[k]
+                full_commodity_name = commodity_name + '__' + operation_name
+                console.log("   Commodity name for server: ", full_commodity_name)
+                sendToServer(createDataElementObject(full_commodity_name))
+            }
         }
         sections_data[i]
     }
@@ -38,14 +41,14 @@ function sendToServer(jsonObject) {
     });
 }
 
-function createDataElementObject(){
+function createDataElementObject(dataElementName){
     data_element_object = {}
     data_element_object.aggregationType = 'SUM'
     data_element_object.domainType = 'TRACKER'
     data_element_object.dataElementCategoryCombo = ''
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
-    data_element_object.name = 'TEST-Element'
-    data_element_object.shortName = 'TEST-Element'
+    data_element_object.name = 'TEST' + dataElementName
+    data_element_object.shortName = 'TEST' + dataElementName
     return data_element_object
 }
