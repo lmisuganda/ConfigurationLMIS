@@ -24,7 +24,8 @@ function attachInitialEventListeners(){
 
     $('#send-commodities-button').click(function(e){
         var sections_data = createDataObjectForServer()
-        createDataElementsFromSections(sections_data)
+        dataElement_uid_list = postDataElementsToServer(sections_data)
+        postDataProgramElementsToServer(dataElement_uid_list)
     });
 }
 

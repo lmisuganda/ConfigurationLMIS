@@ -1,27 +1,22 @@
+dataElement_uid_list = []
 
-function createDataElementsFromSections(sections_data){
+function postDataElementsToServer(sections_data){
     console.log("SectionsData: ", sections_data)
 
     for(var i = 0; i < sections_data.length; i++){
-        console.log("Section: ", sections_data[i].name)
 
         for (var j = 0; j < sections_data[i].commodities.length; j++){
             commodity_name = sections_data[i].commodities[j].name
-            console.log("   Commodity: ", sections_data[i].commodities[j].name)
+
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                console.log("   Commodity name for server: ", full_commodity_name)
                 sendToServer(createDataElementObject(full_commodity_name))
             }
         }
         sections_data[i]
     }
-}
-
-// send data to server
-function postProgramStageDataElements(){
-
+    return dataElement_uid_list
 }
 
 function sendToServer(jsonObject) {
@@ -30,6 +25,7 @@ function sendToServer(jsonObject) {
         url: "/api/dataElements.json", // HUSK Å LEGGE PÅ dhis/api..
         type: 'POST',
         dataType: 'json',
+        async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function
         contentType:'application/json',
         authorization: "Bearer 7fa34aca-a5ba-485b-b108-b18faad54c6d",
         error: function (data) {
@@ -37,6 +33,7 @@ function sendToServer(jsonObject) {
         },
         success: function (data) {
             console.log("Gikk bra", data)
+            dataElement_uid_list.push(data.response.uid)
         }
     });
 }
@@ -48,7 +45,7 @@ function createDataElementObject(dataElementName){
     data_element_object.dataElementCategoryCombo = ''
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
-    data_element_object.name = 'TEST' + dataElementName
-    data_element_object.shortName = 'TEST' + dataElementName
+    data_element_object.name = dataElementName
+    data_element_object.shortName = dataElementName
     return data_element_object
 }
