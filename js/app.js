@@ -27,6 +27,9 @@ function attachInitialEventListeners(){
         postDataProgramElementsToServer(dataElement_uid_list)
         console.log("ALL DATA: ", sections)
         postProgramStageSectionsToServer()
+        postDataElementGroupsForEveryCommodity()
+        postDataElementGroupForEveryOperation()
+        postGroupSetForEveryCommodityGroup()
     });
 }
 
