@@ -1,5 +1,6 @@
+// object for updating
+sections = []
 function createDataObjectForServer(){
-    sections = []
 
     $('#sections .section').each(function (sec_nr, section){
         section_name = $(section).find('.section-name')[0].innerHTML

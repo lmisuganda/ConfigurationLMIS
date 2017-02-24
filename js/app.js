@@ -15,7 +15,6 @@ function attachInitialEventListeners(){
 
     $('#program-name-submit').click(function(e){
         submitProgramToServer()
-
     });
 
     $('#new-section-button').click(function(e){
@@ -26,6 +25,8 @@ function attachInitialEventListeners(){
         var sections_data = createDataObjectForServer()
         dataElement_uid_list = postDataElementsToServer(sections_data)
         postDataProgramElementsToServer(dataElement_uid_list)
+        console.log("ALL DATA: ", sections)
+        postProgramStageSectionsToServer()
     });
 }
 

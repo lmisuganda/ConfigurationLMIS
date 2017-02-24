@@ -1,25 +1,31 @@
 dataElement_uid_list = []
 
 function postDataElementsToServer(sections_data){
-    console.log("SectionsData: ", sections_data)
-
     for(var i = 0; i < sections_data.length; i++){
 
         for (var j = 0; j < sections_data[i].commodities.length; j++){
             commodity_name = sections_data[i].commodities[j].name
 
+
+            data_element_uid_for_commodity = []
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                sendToServer(createDataElementObject(full_commodity_name))
+                sendDataElementToServer(createDataElementObject(full_commodity_name), function(data){
+                    dataElement_uid_list.push(data.response.uid)
+                    data_element_uid_for_commodity.push(data.response.uid)
+                })
+
             }
+
+            sections[i].commodities[j].data_element_uids = data_element_uid_for_commodity
         }
         sections_data[i]
     }
     return dataElement_uid_list
 }
 
-function sendToServer(jsonObject) {
+function sendDataElementToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
         url: "/api/dataElements.json", // HUSK Å LEGGE PÅ dhis/api..
@@ -33,7 +39,7 @@ function sendToServer(jsonObject) {
         },
         success: function (data) {
             console.log("Gikk bra", data)
-            dataElement_uid_list.push(data.response.uid)
+            callback(data)
         }
     });
 }
