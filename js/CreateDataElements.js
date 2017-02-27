@@ -52,7 +52,7 @@ function getShortName(dataElementName){
 
     splitted_commodity_name = commodity_part.split(/[\/ ()]+/)
     for(var i = 0; i < splitted_commodity_name.length; i++){
-        short_name += (splitted_commodity_name[i].charAt(0) + splitted_commodity_name[i].charAt(1))
+        short_name += (splitted_commodity_name[i].charAt(0) + splitted_commodity_name[i].charAt(1) + splitted_commodity_name[i].charAt(2))
     }
 
     splitted_operation = operation_part.split(' ')
