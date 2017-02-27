@@ -34,12 +34,17 @@ function attachInitialEventListeners(){
     });
 }
 
+// Only for injecting Jquery for browser testing
+var jq = document.createElement('script');
+jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(jq);
+
 function addTestDataButton(){
 
     test_data_button = document.createElement('a')
     test_data_button.className = 'large-button-with-text'
     test_data_button.id = 'add-test-data-button'
-    plus_icon_testdata.setAttribute('href', 'testdata')
+    test_data_button.setAttribute('href', 'testdata')
 
     test_data_text = document.createElement('p')
     test_data_text.innerHTML = 'Add test-data!'
@@ -54,7 +59,7 @@ function addTestDataButton(){
     test_data_button.onclick = clonePreviousCommodity
 
 
-    $('main').appendChild(test_data_button)
+    $('#main').appendChild(test_data_button)
 
 }
 
