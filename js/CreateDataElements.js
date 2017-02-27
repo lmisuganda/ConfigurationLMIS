@@ -28,7 +28,7 @@ function postDataElementsToServer(sections_data){
 function sendDataElementToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/api/dataElements.json", // HUSK Å LEGGE PÅ dhis/api..
+        url: "/dhis/api/dataElements.json", // HUSK Å LEGGE PÅ dhis/api..
         type: 'POST',
         dataType: 'json',
         async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function
