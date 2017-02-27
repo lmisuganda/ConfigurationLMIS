@@ -53,9 +53,9 @@ function createDataElementObject(dataElementName){
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
     short_name = ''
-    splitted = dataElementName.split(' ')
+    splitted = dataElementName.split(/[\/()]+/)
     for(var i = 0; i < splitted.length; i++){
-        short_name += splitted[i].charAt(0)
+        short_name += (splitted[i].charAt(0) + splitted[i].charAt(1))
     }
     data_element_object.shortName = short_name
     return data_element_object
