@@ -21,7 +21,7 @@ function injectOrgUnitID(raw_data){
     user_code = raw_data.code
     for(var i = 0; i < raw_data.organisationUnits.length; i++){
         org_unit_ID = raw_data.organisationUnits[i].id
-        $('#orgunit').append('<option value="' + org_unit_ID + '">' + org_unit_ID + '</option>'
+        $('#orgunit').append('<option value="' + org_unit_ID + '">' + org_unit_ID + '</option>')
     }
 }
 function getDataElementsForProgram(program_prefix, callback){
