@@ -87,13 +87,13 @@ function createDataValuesArray(data_element_ids, data_element_values){
     return data_values_array;
 }
 
-function createPostEvent(programId, programStage, orgUnitId, data_element_ids, data_element_values){
+function createPostEvent(programId, programStage, orgUnitId, data_element_ids, data_element_values, user_code){
     post_obj = {};
     post_obj.program = programId;
     post_obj.programStage = programStage;
     post_obj.eventDate = getTodaysDateOnCorrectFormat();
     post_obj.status = 'COMPLETED';
-    post_obj.storedBy = 'admin';
+    post_obj.storedBy = user_code;
     post_obj.orgUnit = orgUnitId;
     post_obj.dataValues = createDataValuesArray(data_element_ids, data_element_values)
     // post_obj.enrollment = "xxxxxxxx";
@@ -127,7 +127,7 @@ function sendSingleEvent(){
     for (var i = 0; i <= NUMBER_OF_DATA_ELEMENTS; i++){
         value_array.push($('#dataelem' + i).val());
     }
-    var jsn = createPostEvent(program, programStage, orgunit, array_of_IDs_for_data_elements, value_array);
+    var jsn = createPostEvent(program, programStage, orgunit, array_of_IDs_for_data_elements, value_array, user_code);
     console.log(jsn)
     sendDataToServer(jsn);
 }
@@ -173,7 +173,8 @@ $( document ).ready(function(){
 
     getOrgUnitId(injectOrgUnitID)
         .then(getDataElementsForProgram(program_name, createDataElementInputFields))
-
-    document.getElementById('submit-button').addEventListener("click", sendSingleEvent);
-    document.getElementById('randomized-submit-button').addEventListener("click", function(){sendMultipleRandomizedEvents(10)});
+        .then(function(){
+            document.getElementById('submit-button').addEventListener("click", sendSingleEvent);
+            document.getElementById('randomized-submit-button').addEventListener("click", function(){sendMultipleRandomizedEvents(10)});
+        })
 })
