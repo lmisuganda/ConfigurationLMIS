@@ -60,9 +60,6 @@ function getShortName(dataElementName){
     for(var i = 0; i < splitted_operation.length; i++){
         short_name += (splitted_operation[i].charAt(0).toUpperCase() + splitted_operation[i].charAt(1).toUpperCase() + splitted_operation[i].charAt(2).toUpperCase())
     }
-    console.log('splitted_commodity_name', splitted_commodity_name)
-    console.log('splitted_operation', splitted_operation)
-    console.log('short_name', short_name)
     return short_name
 }
 
