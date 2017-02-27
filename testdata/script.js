@@ -152,3 +152,25 @@ document.getElementById('randomized-submit-button').addEventListener("click", fu
 
 getOrgUnitId(injectOrgUnitID)
     .then(getDataElementsForProgram('ARV', createDataElementInputFields))
+
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+$( document ).ready(function(){
+    var a = getUrlParameter('program_id')
+    var b = getUrlParameter('program_stage_id')
+    console.log("a: ", a)
+    console.log("b: ", b)
+})
