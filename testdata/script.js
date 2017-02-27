@@ -4,7 +4,7 @@ array_of_IDs_for_data_elements = []
 
 function getOrgUnitId(callback){
     return $.ajax({
-        url: '/dhis/api/me.jsonp?fields=organisationUnits, code',
+        url: '/dhis/api/me.jsonp?fields=organisationUnits,code',
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -18,9 +18,11 @@ function getOrgUnitId(callback){
     });
 }
 function injectOrgUnitID(raw_data){
-    org_unit_ID = raw_data.organisationUnits[0].id
     user_code = raw_data.code
-    $('#orgunit').val(org_unit_ID)
+    for(var i = 0; i < raw_data.organisationUnits.length; i++){
+        org_unit_ID = raw_data.organisationUnits[i].id
+        $('#orgunit').append('<option value="' + org_unit_ID + '">' + org_unit_ID + '</option>'
+    }
 }
 function getDataElementsForProgram(program_prefix, callback){
     return $.ajax({
@@ -120,7 +122,7 @@ function sendDataToServer(jsonObject) {
 
 function sendSingleEvent(){
     var program = $('#program').val();
-    var orgunit = $('#orgunit').val();
+    var orgunit = $('#orgunit').find(":selected").text()
     var programStage = $('#program_stage').val();
 
     var value_array = [];
@@ -136,7 +138,7 @@ function sendMultipleRandomizedEvents(number_of_events){
     for (var numberOfSubmits = 0; numberOfSubmits < number_of_events; numberOfSubmits++){
         randomize_data_element_numbers(MAX_VALUE_FOR_RANDOM_NUMBERS)
         var program = $('#program').val();
-        var orgunit = $('#orgunit').val();
+        var orgunit = $('#orgunit').find(":selected").text()
         var programStage = $('#program_stage').val();
 
         var value_array = [];
