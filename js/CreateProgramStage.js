@@ -17,11 +17,11 @@ function sendNewProgramStageToServer(jsonObject) {
         contentType:'application/json',
         authorization: "Bearer 7fa34aca-a5ba-485b-b108-b18faad54c6d",
         error: function (data) {
-            console.log("Gikk dårlig, men alt ordner seg til slutt :) ", data)
+            console.log("Error: ", data)
         },
         success: function (data) {
             set_program_stage_attribute('stage_id',data.response.uid)
-            console.log("Gikk bra", data)
+            console.log("Created: " + data.response.uid, data)
         }
     });
 }

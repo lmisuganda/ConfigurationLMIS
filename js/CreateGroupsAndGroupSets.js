@@ -13,10 +13,10 @@ function sendDataElementGroupToServer(jsonObject, callback) {
         contentType:'application/json',
         authorization: "Bearer 7fa34aca-a5ba-485b-b108-b18faad54c6d",
         error: function (data) {
-            console.log("Gikk dårlig, men alt ordner seg til slutt :) ", data)
+            console.log("Error: ", data)
         },
         success: function (data) {
-            console.log("Gikk bra", data)
+            console.log("Created: " + data.response.uid, data)
             callback(data)
         }
     });
@@ -31,10 +31,10 @@ function sendDataElementGroupSetToServer(jsonObject, callback) {
         contentType:'application/json',
         authorization: "Bearer 7fa34aca-a5ba-485b-b108-b18faad54c6d",
         error: function (data) {
-            console.log("Gikk dårlig, men alt ordner seg til slutt :) ", data)
+            console.log("Error: ", data)
         },
         success: function (data) {
-            console.log("Gikk bra", data)
+            console.log("Created: " + data.response.uid, data)
             callback(data)
         }
     });
@@ -113,11 +113,10 @@ function getListOfAllOperationsInProgram(){
 }
 
 function postGroupSetForEveryCommodityGroup(){
-    // CHANGE TO 'COMMODITY' AND 'COMMODITY OPERATIONS' IN PRODUCTION
-    sendDataElementGroupSetToServer(createDataElementGroupSet('TEST_Commodity', data_element_group_ids_for_every_commodity), function(data){
+    sendDataElementGroupSetToServer(createDataElementGroupSet('Commodity', data_element_group_ids_for_every_commodity), function(data){
         commodity_group_set_id = data.response.uid
     })
-    sendDataElementGroupSetToServer(createDataElementGroupSet('TEST_Commodity Operations', data_element_group_ids_for_every_operation), function(data){
+    sendDataElementGroupSetToServer(createDataElementGroupSet('Commodity Operations', data_element_group_ids_for_every_operation), function(data){
         commodity_operation_group_set_id = data.response.uid
     })
 }
