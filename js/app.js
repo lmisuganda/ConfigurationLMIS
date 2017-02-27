@@ -30,7 +30,32 @@ function attachInitialEventListeners(){
         postDataElementGroupsForEveryCommodity()
         postDataElementGroupForEveryOperation()
         postGroupSetForEveryCommodityGroup()
+        addTestDataButton()
     });
+}
+
+function addTestDataButton(){
+
+    test_data_button = document.createElement('a')
+    test_data_button.className = 'large-button-with-text'
+    test_data_button.id = 'add-test-data-button'
+    plus_icon_testdata.setAttribute('href', 'testdata')
+
+    test_data_text = document.createElement('p')
+    test_data_text.innerHTML = 'Add test-data!'
+
+    plus_icon_testdata = document.createElement('i')
+    plus_icon_testdata.className = 'fa fa-plus'
+    plus_icon_testdata.setAttribute('aria-hidden', 'true')
+
+
+    test_data_button.appendChild(test_data_text)
+    test_data_button.appendChild(plus_icon_testdata)
+    test_data_button.onclick = clonePreviousCommodity
+
+
+    $('main').appendChild(test_data_button)
+
 }
 
 function submitProgramToServer(){
