@@ -134,7 +134,7 @@ function sendSingleEvent(){
 
 function sendMultipleRandomizedEvents(number_of_events){
     for (var numberOfSubmits = 0; numberOfSubmits < number_of_events; numberOfSubmits++){
-        fillFieldsWithRandomNumbers(MAX_VALUE_FOR_RANDOM_NUMBERS)
+        randomize_data_element_numbers(MAX_VALUE_FOR_RANDOM_NUMBERS)
         var program = $('#program').val();
         var orgunit = $('#orgunit').val();
         var programStage = $('#program_stage').val();
