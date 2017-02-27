@@ -71,7 +71,6 @@ function createDataElementObject(dataElementName){
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
-    data_element_object.shortName = getShortName(dataElementName)
-    data_element_object.code = getProgramName() + data_element_object.shortName
+    data_element_object.shortName = getProgramName() + '_' + getShortName(dataElementName)
     return data_element_object
 }

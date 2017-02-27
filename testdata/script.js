@@ -23,8 +23,9 @@ function injectOrgUnitID(raw_data){
     $('#orgunit').val(org_unit_ID)
 }
 function getDataElementsForProgram(program_prefix, callback){
+    console.log("program_prefix", program_prefix)
     return $.ajax({
-        url: '/dhis/api/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=code:^ilike:' + program_prefix,
+        url: '/dhis/api/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=shortName:^ilike:' + program_prefix,
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -53,6 +54,7 @@ function addRowsForEachDataElement(data_elements){
 }
 
 function createDataElementInputFields(raw_data){
+    console.log("kommer her, raw_data er: ", raw_data)
     data_elements = raw_data.dataElements;
     array_of_IDs_for_data_elements = createArrayOfRelevantDataElementIDs(data_elements)
     NUMBER_OF_DATA_ELEMENTS = array_of_IDs_for_data_elements.length;
