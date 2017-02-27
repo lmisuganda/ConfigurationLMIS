@@ -111,12 +111,9 @@ function createSectionFromOperationsList(section_name, operation_list){
     plus_icon_commodity.className = 'fa fa-plus'
     plus_icon_commodity.setAttribute('aria-hidden', 'true')
 
-
     clone_commodity_button.appendChild(clone_commodity_text)
     clone_commodity_button.appendChild(plus_icon_commodity)
     clone_commodity_button.onclick = clonePreviousCommodity
-
-
 
     section_element.appendChild(new_commodity_button)
     section_element.appendChild(clone_commodity_button)

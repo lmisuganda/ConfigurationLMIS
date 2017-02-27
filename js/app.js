@@ -44,7 +44,7 @@ function addTestDataButton(){
     test_data_button = document.createElement('a')
     test_data_button.className = 'large-button-with-text'
     test_data_button.id = 'add-test-data-button'
-    test_data_button.setAttribute('href', 'testdata')
+    test_data_button.setAttribute('href', 'testdata/index.html')
 
     test_data_text = document.createElement('p')
     test_data_text.innerHTML = 'Add test-data!'
@@ -56,10 +56,8 @@ function addTestDataButton(){
 
     test_data_button.appendChild(test_data_text)
     test_data_button.appendChild(plus_icon_testdata)
-    test_data_button.onclick = clonePreviousCommodity
 
-
-    $('#main').appendChild(test_data_button)
+    document.getElementById('main').appendChild(test_data_button)
 
 }
 
