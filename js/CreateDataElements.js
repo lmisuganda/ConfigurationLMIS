@@ -52,6 +52,11 @@ function createDataElementObject(dataElementName){
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
-    data_element_object.shortName = dataElementName
+    short_name = ''
+    splitted = dataElementName.split(' ')
+    for(var i = 0; i < splitted.length; i++){
+        short_name += splitted[i].charAt(0)
+    }
+    data_element_object.shortName = short_name
     return data_element_object
 }
