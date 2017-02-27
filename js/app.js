@@ -35,7 +35,6 @@ function attachInitialEventListeners(){
 }
 
 function addTestDataButton(){
-
     test_data_button = document.createElement('a')
     test_data_button.className = 'large-button-with-text'
     test_data_button.id = 'add-test-data-button'

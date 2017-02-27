@@ -4,7 +4,7 @@ array_of_IDs_for_data_elements = []
 
 function getOrgUnitId(callback){
     return $.ajax({
-        url: '/dhis/api/me.jsonp?fields=organisationUnits',
+        url: '/dhis/api/me.jsonp?fields=organisationUnits, code',
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -19,6 +19,7 @@ function getOrgUnitId(callback){
 }
 function injectOrgUnitID(raw_data){
     org_unit_ID = raw_data.organisationUnits[0].id
+    user_code = raw_data.code
     $('#orgunit').val(org_unit_ID)
 }
 function getDataElementsForProgram(program_prefix, callback){
@@ -147,12 +148,6 @@ function sendMultipleRandomizedEvents(number_of_events){
     }
 }
 
-document.getElementById('submit-button').addEventListener("click", sendSingleEvent);
-document.getElementById('randomized-submit-button').addEventListener("click", function(){sendMultipleRandomizedEvents(10)});
-
-getOrgUnitId(injectOrgUnitID)
-    .then(getDataElementsForProgram('ARV', createDataElementInputFields))
-
 function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -169,8 +164,17 @@ function getUrlParameter(sParam) {
 };
 
 $( document ).ready(function(){
-    var a = getUrlParameter('program_id')
-    var b = getUrlParameter('program_stage_id')
+    var program_id = getUrlParameter('program_id')
+    var program_stage_id = getUrlParameter('program_stage_id')
+
+    $("#program").val(program_id);
+    $("#program_stage").val(program_stage_id);
+
+    getOrgUnitId(injectOrgUnitID)
+        .then(getDataElementsForProgram('ARV', createDataElementInputFields))
+
+    document.getElementById('submit-button').addEventListener("click", sendSingleEvent);
+    document.getElementById('randomized-submit-button').addEventListener("click", function(){sendMultipleRandomizedEvents(10)});
     console.log("a: ", a)
     console.log("b: ", b)
 })

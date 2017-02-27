@@ -72,5 +72,6 @@ function createDataElementObject(dataElementName){
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
     data_element_object.shortName = getShortName(dataElementName)
+    data_element_object.code = getProgramName() + data_element_object.shortName
     return data_element_object
 }
