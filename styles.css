@@ -96,8 +96,12 @@ ul, li{
     margin-left:1%;
 }
 
-.operations, .operation{
+.operation{
     display:inline-block;
+}
+
+.operations{
+    display:block;
 }
 
 .commodity-name{
