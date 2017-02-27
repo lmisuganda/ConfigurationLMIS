@@ -175,6 +175,4 @@ $( document ).ready(function(){
 
     document.getElementById('submit-button').addEventListener("click", sendSingleEvent);
     document.getElementById('randomized-submit-button').addEventListener("click", function(){sendMultipleRandomizedEvents(10)});
-    console.log("a: ", a)
-    console.log("b: ", b)
 })
