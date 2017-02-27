@@ -46,3 +46,7 @@ function createProgramWithInputValue(){
 function getProgramName(){
     return created_program.name
 }
+
+function getProgramID(){
+    return created_program.id
+}

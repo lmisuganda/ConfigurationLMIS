@@ -34,17 +34,12 @@ function attachInitialEventListeners(){
     });
 }
 
-// Only for injecting Jquery for browser testing
-var jq = document.createElement('script');
-jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";
-document.getElementsByTagName('head')[0].appendChild(jq);
-
 function addTestDataButton(){
 
     test_data_button = document.createElement('a')
     test_data_button.className = 'large-button-with-text'
     test_data_button.id = 'add-test-data-button'
-    test_data_button.setAttribute('href', 'testdata/index.html')
+    test_data_button.setAttribute('href', 'testdata/index.html?program_id=' + getProgramID() + '&program_stage_id=' + getProgramStageId())
 
     test_data_text = document.createElement('p')
     test_data_text.innerHTML = 'Add test-data!'

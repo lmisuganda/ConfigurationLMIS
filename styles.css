@@ -176,3 +176,7 @@ ul, li{
 #program_selector{
     width:100px;
 }
+
+#add-test-data-button{
+    color:inherit;
+}

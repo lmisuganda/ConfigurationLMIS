@@ -41,3 +41,8 @@ function createProgramStageObject(){
 function getProgramStageId(){
     return created_program_stage.stage_id
 }
+
+
+function getProgramID(){
+    return created_program_stage.program_id
+}
