@@ -44,6 +44,28 @@ function sendDataElementToServer(jsonObject, callback) {
     });
 }
 
+function getShortName(dataElementName){
+    two_parts_of_name = dataElementName.split('__')
+    commodity_part = two_parts_of_name[0]
+    operation_part = two_parts_of_name[1]
+    short_name = ''
+
+    splitted_commodity_name = commodity_part.split(/[\/ ()]+/)
+    for(var i = 0; i < splitted_commodity_name.length; i++){
+        short_name += (splitted_commodity_name[i].charAt(0) + splitted_commodity_name[i].charAt(1))
+    }
+
+    splitted_operation = operation_part.split(' ')
+    short_name += '_'
+    for(var i = 0; i < splitted_operation.length; i++){
+        short_name += (splitted_operation[i].charAt(0).toUpperCase() + splitted_operation[i].charAt(1).toUpperCase())
+    }
+    console.log('splitted_commodity_name', splitted_commodity_name)
+    console.log('splitted_operation', splitted_operation)
+    console.log('short_name', short_name)
+    return short_name
+}
+
 function createDataElementObject(dataElementName){
     data_element_object = {}
     data_element_object.aggregationType = 'SUM'
@@ -52,11 +74,6 @@ function createDataElementObject(dataElementName){
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
-    short_name = ''
-    splitted = dataElementName.split(/[\/()]+/)
-    for(var i = 0; i < splitted.length; i++){
-        short_name += (splitted[i].charAt(0) + splitted[i].charAt(1))
-    }
-    data_element_object.shortName = short_name
+    data_element_object.shortName = getShortName(dataElementName)
     return data_element_object
 }
