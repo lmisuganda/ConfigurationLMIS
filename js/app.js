@@ -38,7 +38,7 @@ function addTestDataButton(){
     test_data_button = document.createElement('a')
     test_data_button.className = 'large-button-with-text'
     test_data_button.id = 'add-test-data-button'
-    test_data_button.setAttribute('href', 'testdata/index.html?program_id=' + getProgramID() + '&program_stage_id=' + getProgramStageId())
+    test_data_button.setAttribute('href', 'testdata/index.html?program_id=' + getProgramID() + '&program_stage_id=' + getProgramStageId() + '&program_name=' + getProgramName())
 
     test_data_text = document.createElement('p')
     test_data_text.innerHTML = 'Add test-data!'

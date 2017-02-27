@@ -23,7 +23,6 @@ function injectOrgUnitID(raw_data){
     $('#orgunit').val(org_unit_ID)
 }
 function getDataElementsForProgram(program_prefix, callback){
-    console.log("program_prefix", program_prefix)
     return $.ajax({
         url: '/dhis/api/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=shortName:^ilike:' + program_prefix,
         type: 'GET',
@@ -54,7 +53,6 @@ function addRowsForEachDataElement(data_elements){
 }
 
 function createDataElementInputFields(raw_data){
-    console.log("kommer her, raw_data er: ", raw_data)
     data_elements = raw_data.dataElements;
     array_of_IDs_for_data_elements = createArrayOfRelevantDataElementIDs(data_elements)
     NUMBER_OF_DATA_ELEMENTS = array_of_IDs_for_data_elements.length;
@@ -168,12 +166,13 @@ function getUrlParameter(sParam) {
 $( document ).ready(function(){
     var program_id = getUrlParameter('program_id')
     var program_stage_id = getUrlParameter('program_stage_id')
+    var program_name = getUrlParameter('program_name')
 
     $("#program").val(program_id);
     $("#program_stage").val(program_stage_id);
 
     getOrgUnitId(injectOrgUnitID)
-        .then(getDataElementsForProgram('ARV', createDataElementInputFields))
+        .then(getDataElementsForProgram(program_name, createDataElementInputFields))
 
     document.getElementById('submit-button').addEventListener("click", sendSingleEvent);
     document.getElementById('randomized-submit-button').addEventListener("click", function(){sendMultipleRandomizedEvents(10)});
