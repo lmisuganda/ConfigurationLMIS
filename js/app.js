@@ -6,26 +6,24 @@ $( document ).ready(function(){
     attachInitialEventListeners()
 });
 
-function attachInitialEventListeners(){
-    $('#program-name-input').keyup(function (e) {
-        if (e.keyCode == 13) {
-            submitProgramToServer()
-        }
-    });
+var program_name = '';
 
-    $('#program-name-submit').click(function(e){
-        submitProgramToServer()
-    });
+function attachInitialEventListeners(){
 
     $('#new-section-button').click(function(e){
         $('#sections').append(createSectionFromOperationsList(section_names[0], commodity_operation_names))
     });
 
     $('#send-commodities-button').click(function(e){
+        program_name = $('#program-name-input').val()
+        postProgramToServer(createProgramObject(program_name))
+        postProgramStageToServer(createProgramStageObject())
+
         var sections_data = createDataObjectForServer()
         dataElement_uid_list = postDataElementsToServer(sections_data)
-        postDataProgramElementsToServer(dataElement_uid_list)
-        console.log("ALL DATA: ", sections)
+        postProgramDataElementsToServer(dataElement_uid_list)
+
+
         postProgramStageSectionsToServer()
         postDataElementGroupsForEveryCommodity()
         postDataElementGroupForEveryOperation()
@@ -53,11 +51,4 @@ function addTestDataButton(){
 
     document.getElementById('main').appendChild(test_data_button)
 
-}
-
-function submitProgramToServer(){
-    createProgramWithInputValue().then(function(){
-        sendNewProgramStageToServer(createProgramStageObject())
-        $('#program-name-input').val('')
-    })
 }

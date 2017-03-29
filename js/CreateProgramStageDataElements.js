@@ -1,6 +1,6 @@
 program_data_element_uid_list = []
 
-function postDataProgramElementsToServer(dataElement_uid_list){
+function postProgramDataElementsToServer(dataElement_uid_list){
     for(var i = 0; i < dataElement_uid_list.length; i++){
         sendProgramDataElementToServer(createProgramStageDataElement(dataElement_uid_list[i]), function(data){
             program_data_element_uid_list.push(data.response.uid)

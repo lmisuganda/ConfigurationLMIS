@@ -7,7 +7,7 @@ function set_program_attribute(attribute, val){
     created_program[attribute] = val;
 }
 
-function sendNewProgramToServer(jsonObject) {
+function postProgramToServer(jsonObject) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
         url: "/dhis/api/programs", // HUSK Å LEGGE PÅ dhis/api..
@@ -35,12 +35,6 @@ function createProgramObject(name){
     program_object.skipOffline = true
     set_program_attribute('name', program_object.name)
     return program_object
-}
-
-function createProgramWithInputValue(){
-    program_name = $('#program-name-input').val()
-
-    return sendNewProgramToServer(createProgramObject(program_name))
 }
 
 function getProgramName(){

@@ -8,11 +8,12 @@ function set_program_stage_attribute(attribute, val){
     created_program_stage[attribute] = val;
 }
 
-function sendNewProgramStageToServer(jsonObject) {
+function postProgramStageToServer(jsonObject) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
         url: "/dhis/api/programStages", // HUSK Å LEGGE PÅ dhis/api..
         type: 'POST',
+        async: false,
         dataType: 'json',
         contentType:'application/json',
         authorization: "Bearer 7fa34aca-a5ba-485b-b108-b18faad54c6d",
