@@ -93,7 +93,11 @@ function createPostEvent(programId, programStage, orgUnitId, data_element_ids, d
     post_obj = {};
     post_obj.program = programId;
     post_obj.programStage = programStage;
-    post_obj.eventDate = getTodaysDateOnCorrectFormat();
+    if($('#order_date').val() == ''){
+        post_obj.eventDate = getTodaysDateOnCorrectFormat();
+    } else {
+        post_obj.eventDate = $('#order_date').val();
+    }
     post_obj.status = 'COMPLETED';
     post_obj.storedBy = user_code;
     post_obj.orgUnit = orgUnitId;
