@@ -11,7 +11,7 @@ function postDataElementsToServer(sections_data){
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                sendDataElementToServer(createDataElementObject(full_commodity_name), function(data){
+                sendDataElementToServer(createDataElementObject(full_commodity_name, (i+j+k)), function(data){
                     dataElement_uid_list.push(data.response.uid)
                     data_element_uid_for_commodity.push(data.response.uid)
                 })
@@ -63,11 +63,11 @@ function getShortName(dataElementName){
     return short_name
 }
 
-function createDataElementObject(dataElementName){
+function createDataElementObject(dataElementName, unique_identifier){
     data_element_object = {}
     data_element_object.aggregationType = 'SUM'
     data_element_object.domainType = 'TRACKER'
-    data_element_object.code = '' + Math.floor((Math.random()) * (7000 - 4000)) + 4000
+    data_element_object.code = '' + (4000+unique_identifier)
     data_element_object.dataElementCategoryCombo = ''
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
