@@ -11,7 +11,7 @@ function postDataElementsToServer(sections_data){
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                sendDataElementToServer(createDataElementObject(full_commodity_name, (i+j+k)), function(data){
+                sendDataElementToServer(createDataElementObject(full_commodity_name, ((i+1)*(j+1)*(k+1)), function(data){
                     dataElement_uid_list.push(data.response.uid)
                     data_element_uid_for_commodity.push(data.response.uid)
                 })
