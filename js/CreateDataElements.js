@@ -67,7 +67,7 @@ function createDataElementObject(dataElementName){
     data_element_object = {}
     data_element_object.aggregationType = 'SUM'
     data_element_object.domainType = 'TRACKER'
-    data_element_object.code = Math.floor((Math.random()) * (7000 - 4000)) + 4000
+    data_element_object.code = '' + Math.floor((Math.random()) * (7000 - 4000)) + 4000
     data_element_object.dataElementCategoryCombo = ''
     data_element_object.valueType = 'INTEGER'
     data_element_object.zeroIsSignificant = true
