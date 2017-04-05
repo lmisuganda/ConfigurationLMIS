@@ -59,7 +59,7 @@ function createDataElementInputFields(raw_data){
     array_of_IDs_for_data_elements = createArrayOfRelevantDataElementIDs(data_elements)
     NUMBER_OF_DATA_ELEMENTS = array_of_IDs_for_data_elements.length;
     addRowsForEachDataElement(data_elements);
-    randomize_data_element_numbers(NUMBER_OF_DATA_ELEMENTS, MAX_VALUE_FOR_RANDOM_NUMBERS)
+    randomize_data_element_numbers(MAX_VALUE_FOR_RANDOM_NUMBERS)
 }
 
 function randomize_data_element_numbers(max_val){
