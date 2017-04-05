@@ -1,6 +1,7 @@
 dataElement_uid_list = []
 
 function postDataElementsToServer(sections_data){
+    var number_of_elements = 0
     for(var i = 0; i < sections_data.length; i++){
 
         for (var j = 0; j < sections_data[i].commodities.length; j++){
@@ -11,10 +12,11 @@ function postDataElementsToServer(sections_data){
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                sendDataElementToServer(createDataElementObject(full_commodity_name, ((i+1)*(j+1)*(k+1))), function(data){
+                sendDataElementToServer(createDataElementObject(full_commodity_name, number_of_elements), function(data){
                     dataElement_uid_list.push(data.response.uid)
                     data_element_uid_for_commodity.push(data.response.uid)
                 })
+                number_of_elements++
 
             }
 
