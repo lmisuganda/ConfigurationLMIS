@@ -1,5 +1,5 @@
 NUMBER_OF_DATA_ELEMENTS = 0;
-MAX_VALUE_FOR_RANDOM_NUMBERS = 20;
+MAX_VALUE_FOR_RANDOM_NUMBERS = 7;
 array_of_IDs_for_data_elements = []
 
 function getOrgUnitId(callback){
