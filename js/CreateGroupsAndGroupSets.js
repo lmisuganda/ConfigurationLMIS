@@ -66,9 +66,7 @@ function postDataElementGroupsForEveryCommodity(){
         for(var j = 0; j < sections[i].commodities.length;j++){
             data_element_group_name = sections[i].commodities[j].name
             data_element_uids = sections[i].commodities[j].data_element_uids
-            // console.log("Lager group: data_element_group_name", data_element_group_name, data_element_uids)
 
-            // REMOVE COMMENTS FOR PRODUCTION
             sendDataElementGroupToServer(createDataElementGroup(data_element_group_name, data_element_uids), function(data){
                 data_element_group_ids_for_every_commodity.push(data.response.uid)
             })

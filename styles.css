@@ -16,7 +16,6 @@ h2{
 body{
     text-align: center;
     color:black;
-    /*background:#263238;*/
     background-color:white;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -69,7 +68,7 @@ ul, li{
 
 .large-button-with-text{
     display:inline-block;
-    background-color:rgb(33,150,243); /* DHIS approve color */
+    background-color:rgb(33,150,243); /* DHIS approved color */
     margin-left: 20px;
     margin-bottom:20px;
     padding:6px;

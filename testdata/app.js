@@ -102,8 +102,6 @@ function createPostEvent(programId, programStage, orgUnitId, data_element_ids, d
     post_obj.storedBy = user_code;
     post_obj.orgUnit = orgUnitId;
     post_obj.dataValues = createDataValuesArray(data_element_ids, data_element_values)
-    // post_obj.enrollment = "xxxxxxxx";
-    // post_obj.trackedEntityInstance = "xxxxxxxx";
     return post_obj;
 }
 
@@ -134,7 +132,6 @@ function sendSingleEvent(){
         value_array.push($('#dataelem' + i).val());
     }
     var jsn = createPostEvent(program, programStage, orgunit, array_of_IDs_for_data_elements, value_array, user_code);
-    console.log(jsn)
     sendDataToServer(jsn);
 }
 

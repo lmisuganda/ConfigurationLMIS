@@ -22,7 +22,7 @@ table tr{
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-flex-direction: column; /* Safari */
+    -webkit-flex-direction: column;
     flex-direction:         column;
 }
 
