@@ -131,7 +131,12 @@ function sendSingleEvent(){
 
     var value_array = [];
     for (var i = 0; i <= NUMBER_OF_DATA_ELEMENTS; i++){
-        value_array.push($('#dataelem' + i).val());
+        var label = $('label[for=dataelem' + i + ']').text().split('__')[1].toLowerCase()
+        if (label == 'adjusted amc' || label == 'months of stock on-hand' || label == 'quantity required'){
+            value_array.push('');
+        } else {
+            value_array.push($('#dataelem' + i).val());
+        }
     }
     var jsn = createPostEvent(program, programStage, orgunit, array_of_IDs_for_data_elements, value_array, user_code);
     sendDataToServer(jsn);
