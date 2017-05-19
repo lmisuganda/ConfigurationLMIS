@@ -1,10 +1,12 @@
 NUMBER_OF_DATA_ELEMENTS = 0;
 MAX_VALUE_FOR_RANDOM_NUMBERS = 7;
 array_of_IDs_for_data_elements = []
+// var server_url = '/dhis/api' // server
+var server_url = '/api' // demo-server
 
 function getOrgUnitId(callback){
     return $.ajax({
-        url: '/dhis/api/me.jsonp?fields=organisationUnits,code',
+        url: server_url + '/me.jsonp?fields=organisationUnits,code',
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -26,7 +28,7 @@ function injectOrgUnitID(raw_data){
 }
 function getDataElementsForProgram(program_prefix, callback){
     return $.ajax({
-        url: '/dhis/api/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=shortName:^ilike:' + program_prefix,
+        url: server_url + '/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=shortName:^ilike:' + program_prefix,
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -108,7 +110,7 @@ function createPostEvent(programId, programStage, orgUnitId, data_element_ids, d
 function sendDataToServer(jsonObject) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/events",
+        url: server_url + "/events",
         type: 'POST',
         dataType: 'json',
         contentType:'application/json',

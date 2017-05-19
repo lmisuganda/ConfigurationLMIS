@@ -17,7 +17,6 @@ function postDataElementsToServer(sections_data){
                     data_element_uid_for_commodity.push(data.response.uid)
                 })
                 number_of_elements++
-
             }
 
 
@@ -46,7 +45,7 @@ function postDataElementsToServer(sections_data){
 function sendDataElementToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/dataElements.json",
+        url: server_url + '/dataElements.json',
         type: 'POST',
         dataType: 'json',
         async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function

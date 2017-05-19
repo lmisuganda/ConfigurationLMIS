@@ -6,7 +6,7 @@ commodity_operation_group_set_id = ''
 function sendDataElementGroupToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/dataElementGroups",
+        url: server_url + "/dataElementGroups",
         type: 'POST',
         dataType: 'json',
         async: false,
@@ -25,7 +25,7 @@ function sendDataElementGroupToServer(jsonObject, callback) {
 function sendDataElementGroupSetToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/dataElementGroupSets",
+        url: server_url + "/dataElementGroupSets",
         type: 'POST',
         dataType: 'json',
         contentType:'application/json',

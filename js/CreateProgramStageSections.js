@@ -13,7 +13,7 @@ function postProgramStageSectionsToServer(){
 function sendProgramStageSectionToServer(jsonObject) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/programStageSections.json",
+        url: server_url + "/programStageSections.json",
         type: 'POST',
         dataType: 'json',
         async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function
