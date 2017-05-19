@@ -71,7 +71,7 @@ function createDataElementObject(dataElementName, unique_identifier){
     data_element_object.domainType = 'TRACKER'
     data_element_object.code = '' + (4000+unique_identifier)
     data_element_object.dataElementCategoryCombo = ''
-    data_element_object.valueType = 'INTEGER'
+    data_element_object.valueType = 'NUMBER'
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
     data_element_object.shortName = getProgramName() + '_' + getShortName(dataElementName)
