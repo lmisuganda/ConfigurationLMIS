@@ -130,7 +130,7 @@ function sendSingleEvent(){
     var programStage = $('#program_stage').val();
 
     var value_array = [];
-    for (var i = 0; i <= NUMBER_OF_DATA_ELEMENTS; i++){
+    for (var i = 0; i < NUMBER_OF_DATA_ELEMENTS; i++){
         var label = $('label[for=dataelem' + i + ']').text().split('__')[1].toLowerCase()
         if (label == 'adjusted amc' || label == 'months of stock on-hand' || label == 'quantity required'){
             value_array.push('');
