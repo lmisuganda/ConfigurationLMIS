@@ -20,6 +20,22 @@ function postDataElementsToServer(sections_data){
 
             }
 
+
+            full_commodity_name = commodity_name + '__completed'
+            sendDataElementToServer(createDataElementObject(full_commodity_name, number_of_elements), function(data){
+                dataElement_uid_list.push(data.response.uid)
+                data_element_uid_for_commodity.push(data.response.uid)
+            })
+            number_of_elements++
+            full_commodity_name = commodity_name + '__applicable'
+            sendDataElementToServer(createDataElementObject(full_commodity_name, number_of_elements), function(data){
+                dataElement_uid_list.push(data.response.uid)
+                data_element_uid_for_commodity.push(data.response.uid)
+            })
+            number_of_elements++
+
+
+
             sections[i].commodities[j].data_element_uids = data_element_uid_for_commodity
         }
         sections_data[i]
