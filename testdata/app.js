@@ -134,6 +134,12 @@ function sendSingleEvent(){
         var label = $('label[for=dataelem' + i + ']').text().split('__')[1].toLowerCase()
         if (label == 'adjusted amc' || label == 'months of stock on-hand' || label == 'quantity required'){
             value_array.push('');
+        } else if (label == 'completed'){
+            value_array.push(false);
+        } else if (label == 'applicable'){
+            value_array.push(true);
+        } else if (label == 'metadata'){
+            value_array.push(false);
         } else {
             value_array.push($('#dataelem' + i).val());
         }
