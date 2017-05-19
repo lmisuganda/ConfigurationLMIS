@@ -12,7 +12,7 @@ function postDataElementsToServer(sections_data){
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                if (operation_name == 'completed' || operation_name == 'applicable'){
+                if (operation_name == 'completed' || operation_name == 'applicable' || operation_name == 'notApplicable'){
                     sendDataElementToServer(createBooleanDataElementObject(full_commodity_name, number_of_elements), function(data){
                         dataElement_uid_list.push(data.response.uid)
                         data_element_uid_for_commodity.push(data.response.uid)
