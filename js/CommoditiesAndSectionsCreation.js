@@ -27,7 +27,8 @@ function createDataObjectForServer(){
             sections[sec_nr].commodities[com_nr].operations.push('applicable')
 
         })
-        sections[sec_nr].commodities.push({name: 'metadata'})
+        // webapp-specific features
+        sections[sec_nr].commodities.push({name: section_name + 'metadata'})
         sections[sec_nr].commodities[last_com_nr+1].operations = []
         sections[sec_nr].commodities[last_com_nr+1].operations.push('notApplicable')
     });
