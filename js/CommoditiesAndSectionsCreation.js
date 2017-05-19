@@ -9,7 +9,9 @@ function createDataObjectForServer(){
         sections[sec_nr].commodities = []
         var commodities = $(section).find('.all-commodities-in-section .commodity')
 
+        var last_com_nr = 0
         $(commodities).each(function (com_nr, commodity){
+            last_com_nr = com_nr
             var commodity_name = $(commodity).find('.commodity-name')[0].innerHTML
             sections[sec_nr].commodities.push({name: removeHTMLEncodings(commodity_name)})
             sections[sec_nr].commodities[com_nr].operations = []
@@ -19,7 +21,15 @@ function createDataObjectForServer(){
                 var operation_name = operation.innerHTML
                 sections[sec_nr].commodities[com_nr].operations.push(removeHTMLEncodings(operation_name))
             })
+
+            // webapp-specific features
+            sections[sec_nr].commodities[com_nr].operations.push('completed')
+            sections[sec_nr].commodities[com_nr].operations.push('applicable')
+
         })
+        sections[sec_nr].commodities.push({name: 'metadata'})
+        sections[sec_nr].commodities[last_com_nr+1].operations = []
+        sections[sec_nr].commodities[last_com_nr+1].operations.push('notApplicable')
     });
     return sections;
 }

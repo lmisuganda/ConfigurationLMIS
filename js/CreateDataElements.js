@@ -17,34 +17,12 @@ function postDataElementsToServer(sections_data){
                     data_element_uid_for_commodity.push(data.response.uid)
                 })
                 number_of_elements++
+
             }
-
-
-            full_commodity_name = commodity_name + '__completed'
-            sendDataElementToServer(createBooleanDataElementObject(full_commodity_name, number_of_elements), function(data){
-                dataElement_uid_list.push(data.response.uid)
-                data_element_uid_for_commodity.push(data.response.uid)
-            })
-            number_of_elements++
-            full_commodity_name = commodity_name + '__applicable'
-            sendDataElementToServer(createBooleanDataElementObject(full_commodity_name, number_of_elements), function(data){
-                dataElement_uid_list.push(data.response.uid)
-                data_element_uid_for_commodity.push(data.response.uid)
-            })
-            number_of_elements++
-
-
 
             sections[i].commodities[j].data_element_uids = data_element_uid_for_commodity
         }
-
-        full_commodity_name = sections_data[i].name + '__notApplicable'
-        sendDataElementToServer(createBooleanDataElementObject(full_commodity_name, number_of_elements), function(data){
-            dataElement_uid_list.push(data.response.uid)
-            data_element_uid_for_commodity.push(data.response.uid)
-        })
-        number_of_elements++
-
+        sections_data[i]
     }
     return dataElement_uid_list
 }
@@ -52,7 +30,7 @@ function postDataElementsToServer(sections_data){
 function sendDataElementToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: server_url + '/dataElements.json',
+        url: server_url + "/dataElements.json",
         type: 'POST',
         dataType: 'json',
         async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function
@@ -85,19 +63,6 @@ function getShortName(dataElementName){
         short_name += (splitted_operation[i].charAt(0).toUpperCase() + splitted_operation[i].charAt(1).toUpperCase() + splitted_operation[i].charAt(2).toUpperCase())
     }
     return short_name
-}
-
-function createBooleanDataElementObject(dataElementName, unique_identifier){
-    data_element_object = {}
-    data_element_object.aggregationType = 'SUM'
-    data_element_object.domainType = 'TRACKER'
-    data_element_object.code = '' + (4000+unique_identifier)
-    data_element_object.dataElementCategoryCombo = ''
-    data_element_object.valueType = 'BOOLEAN'
-    data_element_object.zeroIsSignificant = true
-    data_element_object.name = dataElementName
-    data_element_object.shortName = getProgramName() + '_' + getShortName(dataElementName)
-    return data_element_object
 }
 
 function createDataElementObject(dataElementName, unique_identifier){
