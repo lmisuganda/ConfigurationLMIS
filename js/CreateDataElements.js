@@ -37,7 +37,14 @@ function postDataElementsToServer(sections_data){
 
             sections[i].commodities[j].data_element_uids = data_element_uid_for_commodity
         }
-        sections_data[i]
+
+        full_commodity_name = sections_data[i].name + '__notApplicable'
+        sendDataElementToServer(createBooleanDataElementObject(full_commodity_name, number_of_elements), function(data){
+            dataElement_uid_list.push(data.response.uid)
+            data_element_uid_for_commodity.push(data.response.uid)
+        })
+        number_of_elements++
+
     }
     return dataElement_uid_list
 }
