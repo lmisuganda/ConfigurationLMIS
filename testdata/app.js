@@ -133,7 +133,7 @@ function sendSingleEvent(){
     for (var i = 0; i < NUMBER_OF_DATA_ELEMENTS; i++){
         var label = $('label[for=dataelem' + i + ']').text().split('__')[1].toLowerCase()
         if (label == 'adjusted amc' || label == 'months of stock on-hand' || label == 'quantity required'){
-            value_array.push('');
+            value_array.push('0');
         } else if (label == 'completed'){
             value_array.push(false);
         } else if (label == 'applicable'){
