@@ -1,8 +1,8 @@
 // Populate with sample data (for demonstration)
 var section_names = ['Adult formulations', 'Pediatric formulations', 'Other formulations']
 var commodity_operation_names = ['Opening balance', 'Quantity received', 'ART & PMTCT Consumption', 'Losses / Adjustments', 'Days out of stock', 'Adjusted AMC', 'Closing Balance', 'Months of stock on-hand', 'Quantity Required']
-// var server_url = '/dhis/api' // server
-var server_url = '/api' // demo-server
+var server_url = '/dhis/api' // server
+//var server_url = '/api' // demo-server
 
 $( document ).ready(function(){
     attachInitialEventListeners()
