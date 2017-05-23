@@ -100,7 +100,7 @@ function createPostEvent(programId, programStage, orgUnitId, data_element_ids, d
     } else {
         post_obj.eventDate = $('#order_date').val();
     }
-    post_obj.status = 'COMPLETED';
+    post_obj.status = 'ACTIVE';
     post_obj.storedBy = user_code;
     post_obj.orgUnit = orgUnitId;
     post_obj.dataValues = createDataValuesArray(data_element_ids, data_element_values)
