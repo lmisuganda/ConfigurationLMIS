@@ -57,6 +57,9 @@ function getShortName(dataElementName){
     two_parts_of_name = dataElementName.split('__')
     commodity_part = two_parts_of_name[0]
     operation_part = two_parts_of_name[1]
+    if (two_parts_of_name.length > 2){
+        operation_part = two_parts_of_name[2]
+    }
     short_name = ''
 
     splitted_commodity_name = commodity_part.split(/[\/ ()]+/)
