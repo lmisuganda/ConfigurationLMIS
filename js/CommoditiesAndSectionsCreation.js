@@ -31,6 +31,7 @@ function createDataObjectForServer(){
         sections[sec_nr].commodities.push({name: section_name + '__metadata'})
         sections[sec_nr].commodities[last_com_nr+1].operations = []
         sections[sec_nr].commodities[last_com_nr+1].operations.push('notApplicable')
+        sections[sec_nr].commodities[last_com_nr+1].operations.push('completed')
     });
     return sections;
 }
