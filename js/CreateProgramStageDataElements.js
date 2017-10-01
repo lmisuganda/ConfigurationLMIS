@@ -33,7 +33,7 @@ function setProgramStageIDToSections(data_element_id, program_data_element_id){
 function sendProgramDataElementToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/programStageDataElements.json",
+        url: server_url + "/programStageDataElements.json",
         type: 'POST',
         dataType: 'json',
         async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function

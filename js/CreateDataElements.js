@@ -12,10 +12,17 @@ function postDataElementsToServer(sections_data){
             for( var k = 0; k < sections_data[i].commodities[j].operations.length; k++){
                 operation_name = sections_data[i].commodities[j].operations[k]
                 full_commodity_name = commodity_name + '__' + operation_name
-                sendDataElementToServer(createDataElementObject(full_commodity_name, number_of_elements), function(data){
-                    dataElement_uid_list.push(data.response.uid)
-                    data_element_uid_for_commodity.push(data.response.uid)
-                })
+                if (operation_name == 'completed' || operation_name == 'applicable' || operation_name == 'notApplicable'){
+                    sendDataElementToServer(createBooleanDataElementObject(full_commodity_name, number_of_elements), function(data){
+                        dataElement_uid_list.push(data.response.uid)
+                        data_element_uid_for_commodity.push(data.response.uid)
+                    })
+                } else {
+                    sendDataElementToServer(createDataElementObject(full_commodity_name, number_of_elements), function(data){
+                        dataElement_uid_list.push(data.response.uid)
+                        data_element_uid_for_commodity.push(data.response.uid)
+                    })
+                }
                 number_of_elements++
 
             }
@@ -30,7 +37,7 @@ function postDataElementsToServer(sections_data){
 function sendDataElementToServer(jsonObject, callback) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/dataElements.json",
+        url: server_url + "/dataElements.json",
         type: 'POST',
         dataType: 'json',
         async: false, // important, wait for all elements to be created before looping in postDataElementsToServer-function
@@ -50,6 +57,9 @@ function getShortName(dataElementName){
     two_parts_of_name = dataElementName.split('__')
     commodity_part = two_parts_of_name[0]
     operation_part = two_parts_of_name[1]
+    if (two_parts_of_name.length > 2){
+        operation_part = two_parts_of_name[2]
+    }
     short_name = ''
 
     splitted_commodity_name = commodity_part.split(/[\/ ()]+/)
@@ -65,13 +75,26 @@ function getShortName(dataElementName){
     return short_name
 }
 
+function createBooleanDataElementObject(dataElementName, unique_identifier){
+    data_element_object = {}
+    data_element_object.aggregationType = 'SUM'
+    data_element_object.domainType = 'TRACKER'
+    data_element_object.code = '' + (4000+unique_identifier)
+    data_element_object.dataElementCategoryCombo = ''
+    data_element_object.valueType = 'BOOLEAN'
+    data_element_object.zeroIsSignificant = true
+    data_element_object.name = dataElementName
+    data_element_object.shortName = getProgramName() + '_' + getShortName(dataElementName)
+    return data_element_object
+}
+
 function createDataElementObject(dataElementName, unique_identifier){
     data_element_object = {}
     data_element_object.aggregationType = 'SUM'
     data_element_object.domainType = 'TRACKER'
     data_element_object.code = '' + (4000+unique_identifier)
     data_element_object.dataElementCategoryCombo = ''
-    data_element_object.valueType = 'INTEGER'
+    data_element_object.valueType = 'NUMBER'
     data_element_object.zeroIsSignificant = true
     data_element_object.name = dataElementName
     data_element_object.shortName = getProgramName() + '_' + getShortName(dataElementName)

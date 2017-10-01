@@ -10,7 +10,7 @@ function set_program_attribute(attribute, val){
 function postProgramToServer(jsonObject) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/programs",
+        url: server_url + "/programs",
         type: 'POST',
         async: false,
         dataType: 'json',

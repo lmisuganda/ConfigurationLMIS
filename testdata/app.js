@@ -1,10 +1,12 @@
 NUMBER_OF_DATA_ELEMENTS = 0;
 MAX_VALUE_FOR_RANDOM_NUMBERS = 7;
 array_of_IDs_for_data_elements = []
+var server_url = '/dhis/api' // server
+// var server_url = '/api' // demo-server
 
 function getOrgUnitId(callback){
     return $.ajax({
-        url: '/dhis/api/me.jsonp?fields=organisationUnits,code',
+        url: server_url + '/me.jsonp?fields=organisationUnits,code',
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -26,7 +28,7 @@ function injectOrgUnitID(raw_data){
 }
 function getDataElementsForProgram(program_prefix, callback){
     return $.ajax({
-        url: '/dhis/api/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=shortName:^ilike:' + program_prefix,
+        url: server_url + '/dataElements.jsonp?fields=code,id,displayName&paging=false&filter=shortName:^ilike:' + program_prefix,
         type: 'GET',
         dataType: 'jsonp',
         contentType:'application/jsonp',
@@ -98,7 +100,7 @@ function createPostEvent(programId, programStage, orgUnitId, data_element_ids, d
     } else {
         post_obj.eventDate = $('#order_date').val();
     }
-    post_obj.status = 'COMPLETED';
+    post_obj.status = 'ACTIVE';
     post_obj.storedBy = user_code;
     post_obj.orgUnit = orgUnitId;
     post_obj.dataValues = createDataValuesArray(data_element_ids, data_element_values)
@@ -108,7 +110,7 @@ function createPostEvent(programId, programStage, orgUnitId, data_element_ids, d
 function sendDataToServer(jsonObject) {
     return $.ajax({
         data: JSON.stringify(jsonObject),
-        url: "/dhis/api/events",
+        url: server_url + "/events",
         type: 'POST',
         dataType: 'json',
         contentType:'application/json',
@@ -128,8 +130,19 @@ function sendSingleEvent(){
     var programStage = $('#program_stage').val();
 
     var value_array = [];
-    for (var i = 0; i <= NUMBER_OF_DATA_ELEMENTS; i++){
-        value_array.push($('#dataelem' + i).val());
+    for (var i = 0; i < NUMBER_OF_DATA_ELEMENTS; i++){
+        var label = $('label[for=dataelem' + i + ']').text().split('__')[1].toLowerCase()
+        if (label == 'adjusted amc' || label == 'months of stock on-hand' || label == 'quantity required'){
+            value_array.push('0');
+        } else if (label == 'completed'){
+            value_array.push(false);
+        } else if (label == 'applicable'){
+            value_array.push(true);
+        } else if (label == 'metadata'){
+            value_array.push(false);
+        } else {
+            value_array.push($('#dataelem' + i).val());
+        }
     }
     var jsn = createPostEvent(program, programStage, orgunit, array_of_IDs_for_data_elements, value_array, user_code);
     sendDataToServer(jsn);
