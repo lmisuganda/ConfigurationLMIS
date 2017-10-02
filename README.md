@@ -26,10 +26,18 @@
 14. Save it as a favorite called “ARV_Order Summary Report”
 15. Kjøre “dataStoreCom.js”-scriptet (legg inn “app_namespace” og “warehouse_name” )
 16. Legge til orgunits groups for “nms_zone_1” osv., slik at man kan bruke det for å hente ut facility warehouse-connection
+17. Create orgunit-levels
+18. Add Standard HTML Reports
+19. Add relevant IDs and names to the Standard HTML reports
 
 
 
-
-Lage orgunit-levels
-Add Standard HTML Reports
-Add relevant IDs and names to the Standard HTML reports
+WHAT TO DO WHEN ENTERED DATA DOESN’T SHOW UP
+- Use Incognito mode
+- Setting up Scheduling
+- Run Analytics
+- Turn of server caching under General Settings
+- Under Settings → Synchronization, sett opp remote server URL
+- Clear cache under Data Administration → Maintenance
+- Make sure to reload without caching in Chrome (CMD + SHIFT + R)
+- Run Browser Cache Cleaner App
